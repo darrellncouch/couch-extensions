@@ -1,6 +1,6 @@
 {
   "name": "couch-extensions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extention methods that help you stay dry",
   "main": "index.min.js",
   "scripts": {

@@ -1,7 +1,6 @@
-export const CouchExtentions = {};
+export const CouchExtensions = {};
 
 declare global {
-
     export interface Array<T> {
         all(func: any): boolean;
         any(func?: any): boolean;
@@ -18,11 +17,6 @@ declare global {
         first(): string;
         removeWhiteSpace(): string;
         tryParse<T>(out): T;
-    }
-
-    interface Number {
-        toPercent(): number;
-        toDecimal(): number;
     }
 }
 
@@ -54,6 +48,8 @@ Array.prototype.single = function (func: (value: any, index: number, array: any[
     const value = this.filter(func);
     if (!value.any())
         return null;
+
+    if(value.length > 1) throw "Array contains more than one of the requested item";
 
     return value[0];
 }
@@ -118,8 +114,8 @@ String.prototype.removeWhiteSpace = function (): string {
     return this.replace(/\s/g, '');
 }
 
-//must be used with a declared variable for the out
-String.prototype.tryParse = function (outCallBack): any {    
+//can be used with a declared variable for the out
+String.prototype.tryParse = function (outCallBack = null): any {    
     try {
         if (this === null) throw "string is null";
 
@@ -127,7 +123,7 @@ String.prototype.tryParse = function (outCallBack): any {
     
         if(this.length === 0) throw "string is empty";
 
-        outCallBack(JSON.parse(this));
+        if(outCallBack) outCallBack(JSON.parse(this));
         return true;
     }
     catch (err) {
@@ -135,13 +131,3 @@ String.prototype.tryParse = function (outCallBack): any {
         return false;
     }
 }
-
-//NUMBERS
-Number.prototype.toPercent = function (): number {
-    return Math.round(this * 10000) / 100;
-}
-
-Number.prototype.toDecimal = function (): number {
-    return Math.round(this * 100) / 10000;
-}
-

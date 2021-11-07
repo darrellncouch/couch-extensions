@@ -122,8 +122,10 @@ String.prototype.tryParse = function (outCallBack = null): any {
         if(this === undefined) throw "string is undefined";
     
         if(this.length === 0) throw "string is empty";
-
-        if(outCallBack) outCallBack(JSON.parse(this));
+        
+        const parsed = JSON.parse(this);
+        
+        if(outCallBack) outCallBack(parsed);
         return true;
     }
     catch (err) {

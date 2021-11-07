@@ -1,10 +1,14 @@
 {
-  "name": "couch-extentions",
+  "name": "couch-extensions",
   "version": "1.0.0",
   "description": "Extention methods that help you stay dry",
-  "main": "index.js",
+  "main": "index.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && uglifyjs --compress --output index.min.js index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darrellncouch/couch-extensions.git"
   },
   "keywords": [
     "extention",
@@ -46,3 +50,5 @@
     "typescript": "^4.4.4"
   }
 }
+
+

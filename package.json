@@ -1,0 +1,48 @@
+{
+  "name": "couch-extentions",
+  "version": "1.0.0",
+  "description": "Extention methods that help you stay dry",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "extention",
+    "extentions",
+    "methods",
+    "extention methods",
+    "prototype",
+    "helper",
+    "helpers",
+    "utility",
+    "utilities",
+    "util",
+    "utils",
+    "dry",
+    "any",
+    "all",
+    "single",
+    "count",
+    "first",
+    "isEmpty",
+    "prepend",
+    "sortByKey",
+    "removeWhiteSpace",
+    "remove white space",
+    "tryparse",
+    "try parse",
+    "parse",
+    "toPercent",
+    "to percent",
+    "toDecimal",
+    "to decimal",
+    "typescript",
+    "global"
+
+  ],
+  "author": "Darrell Couch",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}

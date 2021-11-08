@@ -1,6 +1,6 @@
 {
   "name": "couch-extensions",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Extention methods that help you stay dry",
   "main": "index.min.js",
   "scripts": {
@@ -42,13 +42,14 @@
     "to decimal",
     "typescript",
     "global"
-
   ],
   "author": "Darrell Couch",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^16.11.6",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "ts-transformer-keys": "^0.4.3"
   }
 }
-
-

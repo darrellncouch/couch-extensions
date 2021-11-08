@@ -2,8 +2,8 @@ export const CouchExtensions = {};
 
 declare global {
     export interface Array<T> {
-        all(func: any): boolean;
-        any(func?: any): boolean;
+        all(func: (value: T) => boolean): boolean;
+        any(func?: (value: T) => boolean): boolean;
         count(): number;
         first(): T;
         isEmpty(): boolean;
@@ -16,12 +16,12 @@ declare global {
         isEmpty(): boolean;
         first(): string;
         removeWhiteSpace(): string;
-        tryParse<T>(out): T;
+        tryParse<T>(outCallBack?: (value: T) => T): boolean;
     }
 }
 
 //ARRAYS
-Array.prototype.all = function (func: any): boolean {
+Array.prototype.all = function (func: (value: any) => boolean): boolean {
     return !this.map(x => func(x)).includes(false);
 }
 
@@ -115,7 +115,7 @@ String.prototype.removeWhiteSpace = function (): string {
 }
 
 //can be used with a declared variable for the out
-String.prototype.tryParse = function (outCallBack = null): any {    
+String.prototype.tryParse = function (outCallBack?: (value: any) => any): boolean {    
     try {
         if (this === null) throw "string is null";
 
@@ -123,9 +123,10 @@ String.prototype.tryParse = function (outCallBack = null): any {
     
         if(this.length === 0) throw "string is empty";
         
-        const parsed = JSON.parse(this);
-        
+        const parsed = JSON.parse(this as string);
+
         if(outCallBack) outCallBack(parsed);
+
         return true;
     }
     catch (err) {
